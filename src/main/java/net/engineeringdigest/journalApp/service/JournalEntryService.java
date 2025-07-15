@@ -59,7 +59,7 @@ public class JournalEntryService {
         return journalEntryRepository.findById(id);
     }
 
-    // Update Entry
+    // Update Journal Entry
     public JournalEntry updateEntryById(ObjectId id, JournalEntry updatedEntry) {
         return journalEntryRepository.save(updatedEntry);
     }
