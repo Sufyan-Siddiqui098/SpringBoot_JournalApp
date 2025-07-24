@@ -1,5 +1,6 @@
 package net.engineeringdigest.journalApp.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.engineeringdigest.journalApp.api.response.WeatherResponse;
 import net.engineeringdigest.journalApp.entity.User;
 import net.engineeringdigest.journalApp.service.UserService;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
+@Tag(name="User APIs", description = "Create, update & delete users") // for swagger UI
 public class UserController {
 
     @Autowired
@@ -38,8 +40,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable ObjectId id) {
-        Optional<User> user = userService.getById(id);
+    public ResponseEntity<User> getUserById(@PathVariable String id) {
+        ObjectId objectId = new ObjectId(id);
+        Optional<User> user = userService.getById(objectId);
         if (user.isPresent()) {
             return new ResponseEntity<>(user.get(), HttpStatus.OK);
         }

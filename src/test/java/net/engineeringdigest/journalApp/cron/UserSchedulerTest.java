@@ -1,4 +1,4 @@
-package net.engineeringdigest.journalApp.schedulerTest;
+package net.engineeringdigest.journalApp.cron;
 
 import net.engineeringdigest.journalApp.scheduler.UserScheduler;
 import org.junit.jupiter.api.Disabled;
